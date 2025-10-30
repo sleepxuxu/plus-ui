@@ -211,10 +211,12 @@ const toLastView = (visitedViews: RouteLocationNormalized[], view?: RouteLocatio
 };
 const openMenu = (tag: RouteLocationNormalized, e: MouseEvent) => {
   const menuMinWidth = 105;
-  const offsetLeft = proxy?.$el.getBoundingClientRect().left; // container margin left
-  const offsetWidth = proxy?.$el.offsetWidth; // container width
-  const maxLeft = offsetWidth - menuMinWidth; // left boundary
-  const l = e.clientX - offsetLeft + 15; // 15: margin right
+  const offsetLeft = proxy?.$el.getBoundingClientRect().left || 0;
+  const offsetTop = proxy?.$el.getBoundingClientRect().top || 0;
+  const offsetWidth = proxy?.$el.offsetWidth || 0;
+  const maxLeft = offsetWidth - menuMinWidth;
+  const l = e.clientX - offsetLeft + 15;
+  const t = e.clientY - offsetTop;
 
   if (l > maxLeft) {
     left.value = maxLeft;
@@ -222,7 +224,7 @@ const openMenu = (tag: RouteLocationNormalized, e: MouseEvent) => {
     left.value = l;
   }
 
-  top.value = e.clientY;
+  top.value = t;
   visible.value = true;
   selectedTag.value = tag;
 };
@@ -246,8 +248,15 @@ onMounted(() => {
   background-color: var(--el-bg-color);
   border-top: 1px solid var(--el-border-color-light);
   box-shadow: 0 1px 4px rgba(113, 128, 165, .1);
+  position: relative;
+  z-index: 10;
 
   .tags-view-wrapper {
+    height: 100%;
+    white-space: nowrap;
+    position: relative;
+    padding: 4px 10px 0 10px;
+
     .tags-view-item {
       display: inline-flex;
       align-items: center;
@@ -257,80 +266,38 @@ onMounted(() => {
       color: var(--tags-view-item-color, #495060);
       padding: 0 16px 0 12px;
       font-size: 12px;
-      margin: 4px 0 0 0;
-
-      // 使用伪元素创建波浪形状
-      &::before,
-      &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        width: 20px;
-        height: 26px;
-        background-color: inherit;
-        transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-      }
-
-      &::before {
-        left: -10px;
-        clip-path: path("M10,0 C3.5,0 0,8 0,13 C0,18 3.5,26 10,26 C16.5,26 20,18 20,13 C20,8 16.5,0 10,0 Z");
-      }
-
-      &::after {
-        right: -10px;
-        clip-path: path("M0,0 C6.5,0 10,8 10,13 C10,18 6.5,26 0,26 C-6.5,26 -10,18 -10,13 C-10,8 -6.5,0 0,0 Z");
-      }
-
-      // 设置背景色和边框
+      margin: 0 2px;
       background-color: var(--tags-view-item-bg, var(--el-bg-color));
-      // border-top: 1px solid var(--tags-view-item-border, var(--el-border-color-light));
-      // border-bottom: 1px solid var(--tags-view-item-border, var(--el-border-color-light));
-
-      // 添加过渡效果
+      border: 1px solid var(--tags-view-item-border, var(--el-border-color-light));
+      border-radius: 4px 4px 0 0;
       transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+      z-index: 1;
+      overflow: hidden;
 
       &:hover {
         color: var(--el-color-primary);
         background-color: var(--tags-view-hover-bg, var(--el-fill-color-light));
-
-        &::before,
-        &::after {
-          background-color: var(--tags-view-hover-bg, var(--el-fill-color-light));
-        }
+        border-color: var(--el-color-primary);
+        z-index: 2;
       }
 
       &:first-of-type {
-        margin-left: 15px;
-
-        &::before {
-          display: none;
-        }
+        margin-left: 5px;
       }
 
       &:last-of-type {
-        margin-right: 15px;
-
-        &::after {
-          display: none;
-        }
+        margin-right: 5px;
       }
 
       &.active {
         background-color: var(--tags-view-active-bg);
         color: var(--tags-view-active-color);
-
-        &::before,
-        &::after {
-          background-color: var(--tags-view-active-bg);
-        }
-
         border-color: var(--tags-view-active-border-color);
+        border-bottom-color: transparent;
+        z-index: 3;
+        margin-bottom: -1px;
       }
     }
-  }
-
-  .tags-view-item.active.has-icon::before {
-    content: none !important;
   }
 
   .tags-view-item-title {
@@ -338,6 +305,10 @@ onMounted(() => {
     margin-right: 3px;
     position: relative;
     z-index: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
   }
 
   .tags-view-item-close {
@@ -377,14 +348,18 @@ onMounted(() => {
     font-size: 12px;
     font-weight: 400;
     box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--el-border-color-light);
 
     li {
       margin: 0;
       padding: 7px 16px;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
 
       &:hover {
-        background: #eee;
+        background: var(--el-fill-color-light);
       }
     }
   }
