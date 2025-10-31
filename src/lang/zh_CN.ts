@@ -71,6 +71,7 @@ export default {
   },
   // 导航栏国际化
   navbar: {
+    search: '搜索',
     full: '全屏',
     language: '语言',
     dashboard: '首页',
