@@ -72,9 +72,9 @@ const isActive = (r: RouteLocationNormalized): boolean => {
 const activeStyle = (tag: RouteLocationNormalized) => {
   if (!isActive(tag)) return {};
   return {
-    'background-color': 'var(--tags-view-active-bg)',
-    'border-color': 'var(--tags-view-active-border-color)',
-    'color': 'var(--tags-view-active-color)'
+    'background-color': 'color-mix(in srgb, var(--el-color-primary) 15%, transparent)',
+    'border-color': 'color-mix(in srgb, var(--el-color-primary) 15%, transparent)',
+    'color': 'var(--el-menu-active-color)'
   };
 };
 const isAffix = (tag: RouteLocationNormalized) => {
@@ -289,9 +289,9 @@ onMounted(() => {
       }
 
       &.active {
-        background-color: var(--tags-view-active-bg);
-        color: var(--tags-view-active-color);
-        border-color: var(--tags-view-active-border-color);
+        background-color: color-mix(in srgb, var(--el-color-primary) 15%, transparent);
+        color: var(--el-menu-active-color);
+        border-color: color-mix(in srgb, var(--el-color-primary) 15%, transparent);
         border-bottom-color: transparent;
         z-index: 3;
         margin-bottom: -1px;
@@ -370,8 +370,8 @@ onMounted(() => {
   --tags-view-item-border: var(--el-border-color-light);
   --tags-view-item-color: #495060;
   --tags-view-hover-bg: var(--el-fill-color-light);
-  --tags-view-active-bg: #e5eeff;
-  --tags-view-active-border-color: #dfe4ed;
+  --tags-view-active-bg: color-mix(in srgb, var(--el-color-primary) 15%, transparent);
+  --tags-view-active-border-color: color-mix(in srgb, var(--el-color-primary) 15%, transparent);
   --tags-view-active-color: var(--el-menu-active-color);
 }
 
@@ -380,8 +380,8 @@ html.dark {
   --tags-view-item-border: var(--el-border-color-light);
   --tags-view-item-color: #e5eaf3;
   --tags-view-hover-bg: var(--el-fill-color-dark);
-  --tags-view-active-bg: var(--el-color-primary);
-  --tags-view-active-border-color: var(--el-color-primary);
+  --tags-view-active-bg: rgba(255, 255, 255, 0.05);
+  --tags-view-active-border-color: rgba(255, 255, 255, 0.05);
   --tags-view-active-color: #fff;
 }
 </style>
