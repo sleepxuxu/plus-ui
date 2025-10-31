@@ -51,8 +51,8 @@ const sideTheme = computed(() => settingsStore.sideTheme);
 .sidebar-logo-container {
   position: relative;
   width: 100%;
-  height: 60px;
-  line-height: 60px;
+  height: 80px;
+  line-height: 80px;
   background: #2b2f3a;
   text-align: center;
   overflow: hidden;

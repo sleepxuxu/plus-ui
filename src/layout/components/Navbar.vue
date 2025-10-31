@@ -1,23 +1,17 @@
 <template>
   <div class="navbar">
-    <hamburger id="hamburger-container" :is-active="appStore.sidebar.opened" class="hamburger-container" @toggle-click="toggleSideBar" />
+    <hamburger id="hamburger-container" :is-active="appStore.sidebar.opened" class="hamburger-container"
+      @toggle-click="toggleSideBar" />
     <breadcrumb v-if="!settingsStore.topNav" id="breadcrumb-container" class="breadcrumb-container" />
     <top-nav v-if="settingsStore.topNav" id="topmenu-container" class="topmenu-container" />
 
     <div class="right-menu flex align-center">
       <template v-if="appStore.device !== 'mobile'">
-        <el-select
-          v-if="userId === 1 && tenantEnabled"
-          v-model="companyName"
-          class="min-w-244px"
-          clearable
-          filterable
-          reserve-keyword
-          :placeholder="proxy.$t('navbar.selectTenant')"
-          @change="dynamicTenantEvent"
-          @clear="dynamicClearEvent"
-        >
-          <el-option v-for="item in tenantList" :key="item.tenantId" :label="item.companyName" :value="item.tenantId"> </el-option>
+        <el-select v-if="userId === 1 && tenantEnabled" v-model="companyName" class="min-w-244px" clearable filterable
+          reserve-keyword :placeholder="proxy.$t('navbar.selectTenant')" @change="dynamicTenantEvent"
+          @clear="dynamicClearEvent">
+          <el-option v-for="item in tenantList" :key="item.tenantId" :label="item.companyName" :value="item.tenantId">
+          </el-option>
           <template #prefix><svg-icon icon-class="company" class="el-input__icon input-icon" /></template>
         </el-select>
 
@@ -33,7 +27,8 @@
             <el-popover placement="bottom" trigger="click" transition="el-zoom-in-top" :width="300" :persistent="false">
               <template #reference>
                 <el-badge :value="newNotice > 0 ? newNotice : ''" :max="99">
-                  <div class="right-menu-item hover-effect" style="display: block"><svg-icon icon-class="message" /></div>
+                  <div class="right-menu-item hover-effect" style="display: block"><svg-icon icon-class="message" />
+                  </div>
                 </el-badge>
               </template>
               <template #default>
