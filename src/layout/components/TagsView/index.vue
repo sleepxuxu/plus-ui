@@ -277,7 +277,6 @@ onMounted(() => {
       &:hover {
         color: var(--el-color-primary);
         background-color: var(--tags-view-hover-bg, var(--el-fill-color-light));
-        border-color: var(--el-color-primary);
         z-index: 2;
       }
 

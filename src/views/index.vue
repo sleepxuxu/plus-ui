@@ -38,11 +38,12 @@
           <el-tag type="danger">&yen;免费开源</el-tag>
         </p>
         <p>
-          <el-button type="primary" icon="Cloudy" plain @click="goTarget('https://gitee.com/dromara/RuoYi-Vue-Plus')">访问码云</el-button>
-          <el-button type="primary" icon="Cloudy" plain @click="goTarget('https://github.com/dromara/RuoYi-Vue-Plus')">访问GitHub</el-button>
-          <el-button type="primary" icon="Cloudy" plain @click="goTarget('https://plus-doc.dromara.org/#/ruoyi-vue-plus/changlog')"
-            >更新日志</el-button
-          >
+          <el-button type="primary" icon="Cloudy" plain
+            @click="goTarget('https://gitee.com/dromara/RuoYi-Vue-Plus')">访问码云</el-button>
+          <el-button type="primary" icon="Cloudy" plain
+            @click="goTarget('https://github.com/dromara/RuoYi-Vue-Plus')">访问GitHub</el-button>
+          <el-button type="primary" icon="Cloudy" plain
+            @click="goTarget('https://plus-doc.dromara.org/#/ruoyi-vue-plus/changlog')">更新日志</el-button>
         </p>
       </el-col>
 
@@ -82,11 +83,12 @@
           <el-tag type="danger">&yen;免费开源</el-tag>
         </p>
         <p>
-          <el-button type="primary" icon="Cloudy" plain @click="goTarget('https://gitee.com/dromara/RuoYi-Cloud-Plus')">访问码云</el-button>
-          <el-button type="primary" icon="Cloudy" plain @click="goTarget('https://github.com/dromara/RuoYi-Cloud-Plus')">访问GitHub</el-button>
-          <el-button type="primary" icon="Cloudy" plain @click="goTarget('https://plus-doc.dromara.org/#/ruoyi-cloud-plus/changlog')"
-            >更新日志</el-button
-          >
+          <el-button type="primary" icon="Cloudy" plain
+            @click="goTarget('https://gitee.com/dromara/RuoYi-Cloud-Plus')">访问码云</el-button>
+          <el-button type="primary" icon="Cloudy" plain
+            @click="goTarget('https://github.com/dromara/RuoYi-Cloud-Plus')">访问GitHub</el-button>
+          <el-button type="primary" icon="Cloudy" plain
+            @click="goTarget('https://plus-doc.dromara.org/#/ruoyi-cloud-plus/changlog')">更新日志</el-button>
         </p>
       </el-col>
     </el-row>
@@ -108,12 +110,14 @@ const goTarget = (url: string) => {
     font-size: 17.5px;
     border-left: 5px solid #eee;
   }
+
   hr {
     margin-top: 20px;
     margin-bottom: 20px;
     border: 0;
     border-top: 1px solid #eee;
   }
+
   .col-item {
     margin-bottom: 20px;
   }
@@ -123,7 +127,11 @@ const goTarget = (url: string) => {
     margin: 0;
   }
 
-  font-family: 'open sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'open sans',
+  'Helvetica Neue',
+  Helvetica,
+  Arial,
+  sans-serif;
   font-size: 13px;
   color: #676a6c;
   overflow-x: hidden;
