@@ -58,7 +58,6 @@ function addIframe() {
   width: 100%;
   position: relative;
   overflow: hidden;
-  background-color: var(--appMainBg); // Use CSS variable
 }
 
 .fixed-header+.app-main {
