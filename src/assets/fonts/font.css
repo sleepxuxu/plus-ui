@@ -1,19 +1,24 @@
 @font-face {
-  font-family: 'dinProSemiBold';
-  src: url('./D-DIN-PRO-600-SemiBold.otf');
-}
-@font-face {
-  font-family: 'dinProRegular';
-  src: url('./D-DIN-PRO-400-Regular.otf');
+    font-family: 'MiSans-Bold';
+    src: url("./MiSans-Bold.ttf")
 }
 
-.semiBold {
-  font-family: 'dinProSemiBold';
+@font-face {
+    font-family: 'MiSans-Regular';
+    src: url("./MiSans-Regular.ttf")
 }
-.regular {
-  font-family: 'dinProRegular';
+
+@font-face {
+    font-family: 'MiSans-DemiBold';
+    src: url("./MiSans-Demibold.ttf")
 }
-.pingFang {
-  font-family: 'PingFang SC, PingFang SC';
-  font-weight: 500;
+
+@font-face {
+    font-family: 'MiSans-Light';
+    src: url("./MiSans-Light.ttf");
+}
+
+@font-face {
+    font-family: 'Poppins-SemiBold';
+    src: url("./Poppins-SemiBold.ttf");
 }
