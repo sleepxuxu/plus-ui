@@ -92,7 +92,8 @@
       // border-radius: 8px;
       margin: 1px 5px 1px 5px;
       &:hover {
-        background-color: $base-sub-menu-title-hover !important;
+        background-color: var(--el-menu-active-color) !important;
+        color: #fff !important;
       }
     }
     .sub-menu-title-noDropdown,
@@ -100,7 +101,8 @@
       // border-radius: 8px;
       margin: 1px 5px 1px 5px;
       &:hover {
-        background-color: rgba(0, 0, 0, 0.05) !important;
+        background-color: color-mix(in srgb, var(--el-color-primary) 15%, transparent) !important;
+        color: var(--el-menu-active-color) !important;
       }
     }
 
@@ -108,6 +110,7 @@
       color: $base-menu-color-active !important;
     }
 
+    // 浅色主题下的嵌套菜单样式
     & .nest-menu .el-sub-menu > .el-sub-menu__title,
     & .el-sub-menu .el-menu-item {
       min-width: calc($base-sidebar-width - 20px) !important;
@@ -115,10 +118,12 @@
       height: 45px;
       margin: 1px 5px 1px 5px;
       &:not(.is-active):hover {
-        background-color: rgba(0, 0, 0, 0.1) !important;
+        background-color: color-mix(in srgb, var(--el-color-primary) 15%, transparent) !important;
+        color: var(--el-menu-active-color) !important;
       }
     }
 
+    // 深色主题下的嵌套菜单样式
     & .theme-dark .nest-menu .el-sub-menu > .el-sub-menu__title,
     & .theme-dark .el-sub-menu .el-menu-item {
       background-color: $base-sub-menu-background !important;
@@ -128,14 +133,15 @@
 
       &.is-active {
         background-color: var(--el-menu-active-color) !important;
-        color: #fff;
+        color: #fff !important;
       }
       &:not(.is-active):hover {
-        // you can use $sub-menuHover
-        background-color: $base-sub-menu-hover !important;
+        background-color: var(--el-menu-active-color) !important;
+        color: #fff !important;
       }
     }
 
+    // 深色主题下的顶级菜单样式
     & .theme-dark .nest-menu .el-sub-menu > .el-sub-menu__title,
     & .theme-dark .el-menu-item {
       // border-radius: 8px;
@@ -144,14 +150,15 @@
 
       &.is-active {
         background-color: var(--el-menu-active-color) !important;
-        color: #fff!important;
+        color: #fff !important;
       }
       &:not(.is-active):hover {
-        // you can use $sub-menuHover
-        background-color: $base-menu-hover !important;
+        background-color: var(--el-menu-active-color) !important;
+        color: #fff !important;
       }
     }
 
+    // 浅色主题下的顶级菜单样式
     & .nest-menu .el-sub-menu > .el-sub-menu__title,
     & .el-menu-item {
       // border-radius: 8px;
@@ -159,14 +166,12 @@
       margin: 1px 5px 1px 5px;
 
       &.is-active {
-        // background-color: var(--el-menu-active-color) !important;
-        // color: #fff;
-        background-color: #e5eeff;
+        background-color: color-mix(in srgb, var(--el-color-primary) 15%, transparent) !important;
         color: var(--el-menu-active-color) !important;
       }
       &:not(.is-active):hover {
-        // you can use $sub-menuHover
-        background-color: rgba(0, 0, 0, 0.04) !important;
+        background-color: color-mix(in srgb, var(--el-color-primary) 15%, transparent) !important;
+        color: var(--el-menu-active-color) !important;
       }
     }
   }
